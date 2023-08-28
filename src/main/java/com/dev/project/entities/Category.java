@@ -1,19 +1,25 @@
 package com.dev.project.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Category implements Serializable {
     //Declaração das variáveis para a Categoria
     private static final long serialVersioUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
     @JsonIgnore
+    @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();
 
     //Constructo vazio
