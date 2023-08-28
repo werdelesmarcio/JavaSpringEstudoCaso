@@ -1,33 +1,29 @@
 package com.dev.project.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-public class Category implements Serializable {
-    //Declaração das variáveis para a Categoria
-    private static final long serialVersioUID = 1L;
+public class Product implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
-
-    @JsonIgnore
-    private List<Product> products = new ArrayList<>();
+    private Double price;
+    private Category category;
 
     //Constructo vazio
-    public Category(){
+    public Product(){
     }
 
     //Constructo padrão
-    public Category(Long id, String name){
-        super();
+    public Product(Long id, String name, Double price, Category category) {
         this.id = id;
         this.name = name;
+        this.price = price;
+        this.category = category;
     }
 
-    //Métodos de acesso
     public Long getId() {
         return id;
     }
@@ -44,17 +40,28 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Double getPrice() {
+        return price;
     }
 
-    //Hashcode Equals para a Id
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(id, category.id);
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
     }
 
     @Override
