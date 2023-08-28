@@ -9,7 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -47,7 +46,6 @@ public class ProjectApplication implements CommandLineRunner {
 		productRepository.save(p3);
 		productRepository.save(p4);
 		productRepository.save(p5);
-
 
 	}
 }
